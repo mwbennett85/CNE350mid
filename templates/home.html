@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+</head>
+<body>
+    <h1>Home</h1>
+
+    <h2>Query the Database</h2>
+    <form action="/search" method="GET">
+        <label for="zipCode">Enter Zip Code:</label>
+        <input type="text" id="zipCode" name="zipCode">
+        <button type="submit">Search</button>
+    </form>
+
+    <h2>Update the Database</h2>
+    <form action="/update" method="POST">
+        <label for="updateZipCode">Enter Zip Code:</label>
+        <input type="text" id="updateZipCode" name="zipCode">
+        <label for="updatePopulation">Enter Population:</label>
+        <input type="text" id="updatePopulation" name="population">
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html>
