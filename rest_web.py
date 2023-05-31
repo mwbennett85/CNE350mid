@@ -55,17 +55,18 @@ def update():
     zip_code = request.form['zipCode']
     population = request.form['population']
 
-    if isinstance(zip_code, int) and isinstance(population, int):
+    if zip_code.isdigit() and population.isdigit():
+        zip_code = int(zip_code)
+        population = int(population)
+
         if 0 <= zip_code <= 99999 and population >= 0:
             connection = engine.connect()
             query = text("UPDATE zipcodes SET population = :population WHERE zip_code = :zip_code")
             connection.execute(query, {"zip_code": zip_code, "population": population})
             connection.close()
             return render_template('update_success.html')
-        else:
-            return render_template('update_fail.html')
-    else:
-        return render_template('update_fail.html')
+
+    return render_template('update_fail.html')
 
 #Run Flask
 if __name__ == '__main__':
